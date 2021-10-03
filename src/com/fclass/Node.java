@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Node<K, V> {
     private final K key;
     private V value;
-    private Node<K,V> next;
+     Node<K,V> next;
     private int hash;
 
     // Constructor
@@ -13,7 +13,7 @@ public class Node<K, V> {
         this.key = key;
         this.value = value;
         this.next = null;
-        this.hash = key.hashCode();
+       // this.hash = key.hashCode();
     }
 
     //Getter
@@ -39,6 +39,10 @@ public class Node<K, V> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getKey());
+        if(this.key == null ){
+            return 0;
+        }else {
+            return Objects.hash(getKey());
+        }
     }
 }

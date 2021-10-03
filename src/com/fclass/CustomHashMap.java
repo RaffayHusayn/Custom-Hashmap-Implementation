@@ -20,17 +20,73 @@ public class CustomHashMap<K,V> {
     }
 
     //put method for inserting key value pair in the hashmap
-    public void put(K key, V val){
-    Node<K,V> node = new Node<>(key, val);
+    public void put(K key , V val){
 
-
+    Node<K,V> nodeToEnter = new Node<>(key, val);
 
     //IMPORTANT: USING BITWISE AND OPERATOR (&) INSTEAD OF MODULUS TO DEAL WITH NEGATIVE HASHCODE VALUES
-    this.hashIndex = node.hashCode() & (initialCap -1); //this is Bitwise AND operator
+    this.hashIndex = nodeToEnter.hashCode() & (initialCap -1); //this is Bitwise AND operator
+
+
+    //First see what's at the HashIndex
+    Node<K,V> nodeToCheck = bucket[hashIndex];
+    if(nodeToCheck == null){
+        bucket[hashIndex] = nodeToEnter;
+    }else {
+
+        while (nodeToCheck.next != null) {
+            if(nodeToCheck.getKey().equals(key)){
+
+                nodeToCheck.setValue(val);
+                return;
+            }
+
+            nodeToCheck = nodeToCheck.next;
+        }
+
+        //checking the last Node because we aren't doing that in the loop
+
+        if (nodeToCheck.getKey().equals(key)){
+            nodeToCheck.setValue(val);
+            return;
+        }
+
+
+        nodeToCheck.next = nodeToEnter;
+    }
 
     }
 
     public int getHashIndex() {
         return hashIndex;
+    }
+
+    public void printAll(){
+//        for(int i =0 ; i < initialCap; i++){
+//            try {
+//                System.out.println(bucket[i].getValue());
+//            }catch(Exception e){
+//                System.out.println("there was a null at point : " + i );
+//            }
+//        }
+
+        for(int i= 0 ; i < initialCap ; i++ ){
+
+            Node<K,V > n = bucket[i];
+            if( n == null){
+                System.out.println("nothing on Index : " + i);
+            }else{
+                System.out.println("Values on Index : " + i);
+                while(n.next != null){
+                    System.out.println(n.getValue());
+                    n = n.next;
+                }
+
+                System.out.println(n.getValue());
+            }
+        }
+
+
+
     }
 }
