@@ -5,30 +5,35 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
 
-        CustomHashMap<Integer, String> head = new CustomHashMap<>(4);
-        head.put(1212123 , "Ali");
+        CustomHashMap<String, String> head = new CustomHashMap<>(4);
+        head.put("First" , "Ali");
         System.out.println(head.getHashIndex());
-        head.put(1234, "Raffay");
+        head.put("Second", "Raffay");
         System.out.println(head.getHashIndex());
-        head.put(123, "Ayesha");
+        head.put("Third", "Ayesha");
         System.out.println(head.getHashIndex());
-        head.put(4321, "Nabia");
+        head.put("Fourth", "Nabia");
         System.out.println(head.getHashIndex());
         head.put(null , "Nabia");
         System.out.println(head.getHashIndex());
         head.put(null , "Raffayaa");
         System.out.println(head.getHashIndex());
-        System.out.println("this is the values");
+        System.out.println("these are the values");
         head.printAll();
         System.out.println("--------get method ___________");
         System.out.println(head.get(null));
-        System.out.println(head.get(4321));
-        System.out.println(head.get(1234));
-        System.out.println(head.get(1212123));
-        System.out.println(head.get(123));
-        System.out.println(head.get(1232131412));
+        System.out.println(head.get("Second"));
+        System.out.println(head.get("First"));
+        System.out.println(head.get("hahha"));
+        System.out.println(head.get("Third"));
+        System.out.println(head.get("Fourth"));
 
         head.put(null , "Radjalsffayaa");
         System.out.println(head.get(null));
+        Node<String, String> removed = head.remove("First") ;
+        System.out.println(removed.getValue());
+        Node<String, String> removed1 = head.remove("Second") ;
+        System.out.println(removed1.getValue());
+
     }
 }
