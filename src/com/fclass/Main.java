@@ -19,6 +19,11 @@ public class Main {
         System.out.println("this is the values");
         head.printAll();
 
+        System.out.println("---------getting values---------");
+        System.out.println(head.get(null));
+        System.out.println(head.get(4321));
+        System.out.println(head.get(123));
+
 
 
     }

@@ -19,7 +19,12 @@ public class CustomHashMap<K,V> {
         this.bucket = new Node[size];
     }
 
-    //put method for inserting key value pair in the hashmap
+
+
+
+
+
+    //----------------PUT METHOD-------------- for inserting key value pair in the hashmap
     public void put(K key , V val){
 
     Node<K,V> nodeToEnter = new Node<>(key, val);
@@ -56,6 +61,49 @@ public class CustomHashMap<K,V> {
     }
 
     }
+
+
+
+
+
+    //----------------GET METHOD-------------- for retrieving key value pair from the hashmap
+
+    public V get(K key){
+
+        Node<K,V> tempNode = new Node<>(key, null);
+        int checkIndex;
+        if(key == null){
+            checkIndex = 0;
+        }else {
+
+            checkIndex = tempNode.hashCode() & (initialCap - 1);
+        }
+        tempNode = bucket[checkIndex];
+
+
+        //this handles if there hasn't been any entries on that index before like if
+        //index 0 has no node then tempNode will be null and throws a null exception
+        //if we dont check it before hand
+        if(tempNode == null) {
+            return null;
+        }
+        System.out.println("setting value of i");
+        int i = 0;
+        while(tempNode != null){
+            System.out.println("key : " + i + "  " + tempNode.getKey());
+            if(tempNode.getKey().equals(key)){
+                return tempNode.getValue();
+            }
+            tempNode = tempNode.next;
+            i++;
+        }
+
+
+        return null;
+
+    }
+
+
 
     public int getHashIndex() {
         return hashIndex;
