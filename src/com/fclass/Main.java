@@ -20,8 +20,15 @@ public class Main {
         System.out.println(head.getHashIndex());
         System.out.println("this is the values");
         head.printAll();
+        System.out.println("--------get method ___________");
+        System.out.println(head.get(null));
+        System.out.println(head.get(4321));
+        System.out.println(head.get(1234));
+        System.out.println(head.get(1212123));
+        System.out.println(head.get(123));
+        System.out.println(head.get(1232131412));
 
-
-
+        head.put(null , "Radjalsffayaa");
+        System.out.println(head.get(null));
     }
 }
