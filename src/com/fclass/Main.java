@@ -16,6 +16,8 @@ public class Main {
         System.out.println(head.getHashIndex());
         head.put(null , "Nabia");
         System.out.println(head.getHashIndex());
+        head.put(null , "Raffayaa");
+        System.out.println(head.getHashIndex());
         System.out.println("this is the values");
         head.printAll();
 

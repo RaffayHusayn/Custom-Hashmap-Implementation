@@ -27,38 +27,43 @@ public class CustomHashMap<K,V> {
     //IMPORTANT: USING BITWISE AND OPERATOR (&) INSTEAD OF MODULUS TO DEAL WITH NEGATIVE HASHCODE VALUES
         if(key==null){
             this.hashIndex = 0;
+            bucket[hashIndex] = nodeToEnter; // always override the last null value, no linked list here
         }else {
             this.hashIndex = nodeToEnter.hashCode() & (initialCap - 1); //this is Bitwise AND operator
             if (hashIndex == 0) {
                 hashIndex++; //because index =0  is reserved for null key
             }
-        }
-    //First see what's at the HashIndex
-    Node<K,V> nodeToCheck = bucket[hashIndex];
-    if(nodeToCheck == null){
-        bucket[hashIndex] = nodeToEnter;
-    }else {
 
-        while (nodeToCheck.next != null) {
-            if(nodeToCheck.getKey().equals(key)){
 
-                nodeToCheck.setValue(val);
-                return;
+
+            //First see what's at the HashIndex
+            Node<K,V> nodeToCheck = bucket[hashIndex];
+            if(nodeToCheck == null){
+                bucket[hashIndex] = nodeToEnter;
+            }else {
+
+                while (nodeToCheck.next != null) {
+                    if(nodeToCheck.getKey().equals(key)){
+
+                        nodeToCheck.setValue(val);
+                        return;
+                    }
+
+                    nodeToCheck = nodeToCheck.next;
+                }
+
+                //checking the last Node because we aren't doing that in the loop
+
+                if (nodeToCheck.getKey().equals(key)){
+                    nodeToCheck.setValue(val);
+                    return;
+                }
+
+
+                nodeToCheck.next = nodeToEnter;
             }
 
-            nodeToCheck = nodeToCheck.next;
         }
-
-        //checking the last Node because we aren't doing that in the loop
-
-        if (nodeToCheck.getKey().equals(key)){
-            nodeToCheck.setValue(val);
-            return;
-        }
-
-
-        nodeToCheck.next = nodeToEnter;
-    }
 
     }
 
