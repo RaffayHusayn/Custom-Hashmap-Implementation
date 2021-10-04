@@ -25,9 +25,14 @@ public class CustomHashMap<K,V> {
     Node<K,V> nodeToEnter = new Node<>(key, val);
 
     //IMPORTANT: USING BITWISE AND OPERATOR (&) INSTEAD OF MODULUS TO DEAL WITH NEGATIVE HASHCODE VALUES
-    this.hashIndex = nodeToEnter.hashCode() & (initialCap -1); //this is Bitwise AND operator
-
-
+        if(key==null){
+            this.hashIndex = 0;
+        }else {
+            this.hashIndex = nodeToEnter.hashCode() & (initialCap - 1); //this is Bitwise AND operator
+            if (hashIndex == 0) {
+                hashIndex++; //because index =0  is reserved for null key
+            }
+        }
     //First see what's at the HashIndex
     Node<K,V> nodeToCheck = bucket[hashIndex];
     if(nodeToCheck == null){
