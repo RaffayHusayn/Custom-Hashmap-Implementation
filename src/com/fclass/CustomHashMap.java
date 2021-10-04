@@ -19,7 +19,12 @@ public class CustomHashMap<K,V> {
         this.bucket = new Node[size];
     }
 
-    //put method for inserting key value pair in the hashmap
+
+
+
+
+
+    //----------------PUT METHOD-------------- for inserting key value pair in the hashmap
     public void put(K key , V val){
 
     Node<K,V> nodeToEnter = new Node<>(key, val);
