@@ -35,13 +35,15 @@ public class Main {
 
             Node<String, String> removed = head.remove("First");
             System.out.println(removed.getValue());
-            Node<String, String> removed1 = head.remove("afsld");
-            System.out.println(removed1.getValue());
-
+            System.out.println("at asfld");
+//            Node<String, String> removed1 = head.remove("afsld");
+//            System.out.println(removed1.getValue());
+            System.out.println("at first for the second time");
+            Node<String, String> removed4= head.remove("irst");
+            System.out.println(removed4.getValue());
 
         } catch (Exception e){
             System.out.println("Null Pointer Exception: one of the object might be not exist in the hashMap anymore.");
         }
-
     }
 }

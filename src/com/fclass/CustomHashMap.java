@@ -120,6 +120,10 @@ public class CustomHashMap<K, V> {
                 removeIndex++; //because index =0  is reserved for null key
             }
             tempNode = bucket[removeIndex];
+
+
+            //this if statement checks if there's any Node at the particular removeIndex of the argument given to the remove Method
+            //only executes when there's no linkedList at the index
             if (tempNode == null) {
                 System.out.println("nothing to remove");
                 return null;
