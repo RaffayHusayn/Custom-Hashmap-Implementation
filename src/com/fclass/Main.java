@@ -1,12 +1,12 @@
 package com.fclass;
 
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
 
         CustomHashMap<String, String> head = new CustomHashMap<>(4);
-        head.put("First" , "Ali");
+        head.put("First", "Ali");
         System.out.println(head.getHashIndex());
         head.put("Second", "Raffay");
         System.out.println(head.getHashIndex());
@@ -14,9 +14,9 @@ public class Main {
         System.out.println(head.getHashIndex());
         head.put("Fourth", "Nabia");
         System.out.println(head.getHashIndex());
-        head.put(null , "Nabia");
+        head.put(null, "Nabia");
         System.out.println(head.getHashIndex());
-        head.put(null , "Raffayaa");
+        head.put(null, "Raffayaa");
         System.out.println(head.getHashIndex());
         System.out.println("these are the values");
         head.printAll();
@@ -28,12 +28,20 @@ public class Main {
         System.out.println(head.get("Third"));
         System.out.println(head.get("Fourth"));
 
-        head.put(null , "Radjalsffayaa");
+        head.put(null, "Radjalsffayaa");
         System.out.println(head.get(null));
-        Node<String, String> removed = head.remove("First") ;
-        System.out.println(removed.getValue());
-        Node<String, String> removed1 = head.remove("Second") ;
-        System.out.println(removed1.getValue());
+
+        try {
+
+            Node<String, String> removed = head.remove("First");
+            System.out.println(removed.getValue());
+            Node<String, String> removed1 = head.remove("afsld");
+            System.out.println(removed1.getValue());
+
+
+        } catch (Exception e){
+            System.out.println("Null Pointer Exception: one of the object might be not exist in the hashMap anymore.");
+        }
 
     }
 }

@@ -126,7 +126,6 @@ public class CustomHashMap<K, V> {
             }
 
             if(tempNode.getKey().equals(key)){
-                System.out.println("probably only runs if elemenet is on the head of the linked list");
                 bucket[removeIndex] = tempNode.next;
                 tempNode.next = null;
                 return tempNode;
@@ -147,7 +146,6 @@ public class CustomHashMap<K, V> {
             }
 
         }
-        System.out.println("Not found anywhere");
         return null;
     }
 
@@ -157,13 +155,6 @@ public class CustomHashMap<K, V> {
     }
 
     public void printAll() {
-//        for(int i =0 ; i < initialCap; i++){
-//            try {
-//                System.out.println(bucket[i].getValue());
-//            }catch(Exception e){
-//                System.out.println("there was a null at point : " + i );
-//            }
-//        }
 
         for (int i = 0; i < initialCap; i++) {
 
